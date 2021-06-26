@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <div class="element" :class="{'parent-root': items.length > 0}">
-      <h3 class="element__title">{{ title }}</h3>
-      <button class="element__button" type="button" @click="addElement">+</button>
+    <div class="map">
+      <div class="element" :class="{'parent-root': items.length > 0}">
+        <h3 class="element__title">{{ title }}</h3>
+        <button class="element__button" type="button" @click="addElement">+</button>
+      </div>
+      <ul class="element__list">
+        <NestedElement
+          v-for="(item, index) in items"
+          :key="item.id"
+          :item="item"
+          :index="index"
+          :class="{'list-root': items.length > 1}"
+          @deleteElement="deleteElement"/>
+      </ul>
     </div>
-    <ul class="element__list">
-      <NestedElement
-        v-for="(item, index) in items"
-        :key="item.id"
-        :item="item"
-        :index="index"
-        @deleteElement="deleteElement"/>
-    </ul>
+    <div class="json-map">
+      <pre>{{ JSON.stringify({title, items}, null, 4) }}</pre>
+    </div>
   </div>
 </template>
 
@@ -44,14 +50,37 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-   height: 100vh;
-   display: flex;
-   align-items: center;
+  height: 100vh;
+  display: block;
+  margin: 0;
+  padding: 0;
  }
+
+.map {
+  min-height: calc(60% - 40px);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.json-map {
+  width: 100%;
+  min-height: calc(40% - 40px);
+  padding: 20px;
+  background-color: black;
+  color: chartreuse;
+  font-weight: bold;
+  overflow-y: scroll;
+}
 
 .element {
   position: relative;
@@ -92,18 +121,38 @@ export default {
   margin-left: 50px;
 }
 
-.element__list:before {
+.nested-element {
+  position: relative;
+  display: flex;
+}
+
+.list-root:before {
   background-color: black;
   position: absolute;
   content: '';
   width: 2px;
-  height: calc( 100% - 100px );
+  height: 100%;
   left: -25px;
-  top: 50px;
 }
 
-.nested-element {
-  display: flex;
+.list-root:first-child:before {
+  background-color: black;
+  position: absolute;
+  content: '';
+  width: 2px;
+  height: 50%;
+  left: -25px;
+  top: 50%;
+}
+
+.list-root:last-child:before {
+  background-color: black;
+  position: absolute;
+  content: '';
+  width: 2px;
+  height: 50%;
+  left: -25px;
+  bottom: 50%;
 }
 
 .active {

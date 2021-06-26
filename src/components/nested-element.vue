@@ -1,6 +1,6 @@
 <template>
-  <div class="nested-element">
-    <div class="element" :class="{'active': item.children.length > 1, 'parent-root': item.children.length > 0, 'child-root': true}" :style="{backgroundColor: randomColor()}">
+  <div class="nested-element" >
+    <div class="element" :class="{'active': childLength, 'parent-root': item.children.length > 0, 'child-root': true}" :style="{backgroundColor: randomColor()}">
       <h3 class="element__title">{{ item.title }}</h3>
       <button class="element__button delete" v-if="parentItem" @click="deleteChild">-</button>
       <button class="element__button delete-child" v-if="!parentItem" @click="deleteElement">-</button>
@@ -13,6 +13,7 @@
         :item="child"
         :index="childIndex"
         :key="child.id"
+        :class="{'list-root': childLength}"
         @deleteSubTask="deleteChild"
       />
     </ul>
@@ -34,6 +35,11 @@ export default {
     parentItem: {
       type: Object,
       required: false
+    }
+  },
+  computed: {
+    childLength: function () {
+      return this.item.children.length > 1
     }
   },
   methods: {
