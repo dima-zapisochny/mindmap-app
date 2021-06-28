@@ -1,8 +1,8 @@
 <template>
-  <header>
-    <a href="" download="data.json" class="download-file__button" @click="downloadJsonFile">DOWNLOAD JSON FILE</a>
-    <input type="file" class="load-file__button" name="files" @change="loadJsonFile"/>
-    <h3 class="header__title">MINDMAP APP</h3>
+  <header class="header-app">
+    <a href="" download="data.json" class="download-file-button" @click="downloadJsonFile">DOWNLOAD JSON FILE</a>
+    <input type="file" class="load-file-button" name="files" @change="loadJsonFile"/>
+    <h3 class="header-app__title">MINDMAP APP</h3>
   </header>
 </template>
 
@@ -49,76 +49,65 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
-header {
+.header-app {
   height: 70px;
-  -webkit-box-shadow: 0px 5px 10px 0px rgba(34, 60, 80, 0.2);
-  -moz-box-shadow: 0px 5px 10px 0px rgba(34, 60, 80, 0.2);
   box-shadow: 0px 5px 10px 0px rgba(34, 60, 80, 0.2);
+  &__title {
+    margin: 25px;
+    color: #008b8b;
+    display: inline-flex;
+    float: right;
+  }
 }
 
-.download-file__button {
+.download-file-button {
   text-decoration: none;
-  background-color: darkcyan;
+  background-color: #008b8b;
   margin: 15px;
   padding: 10px 15px;
-  border: 2px solid darkcyan;
-  color: white;
+  color: #fff;
   border-radius: 3px;
   font-weight: 700;
   font-size: 10pt;
   cursor: pointer;
+  &:hover {
+    webkit-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+    moz-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+  }
+  &:active {
+    opacity: .5;
+  }
 }
 
-.download-file__button:hover {
-  -webkit-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
-  -moz-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
-  box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
-}
-
-.download-file__button:active {
-  opacity: .5;
-}
-
-.load-file__button {
+.load-file-button {
   color: transparent;
-}
-
-.load-file__button::-webkit-file-upload-button {
-  visibility: hidden;
-}
-.load-file__button:before {
-  content: 'CHOOSE JSON FILE';
-  margin: 15px;
-  padding: 10px 15px;
-  background-color: darkcyan;
-  display: inline-block;
-  border: 2px solid darkcyan;
-  border-radius: 3px;
-  outline: none;
-  white-space: nowrap;
-  -webkit-user-select: none;
-  color: white;
-  font-weight: 700;
-  font-size: 10pt;
-  cursor: pointer;
-}
-.load-file__button:hover::before {
-  -webkit-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
-  -moz-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
-  box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
-}
-
-.load-file__button:active::before {
-  opacity: .5;
-}
-
-.header__title {
-  margin: 25px;
-  color: darkcyan;
-  display: inline-flex;
-  float: right;
+  &::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  &:before {
+    content: 'CHOOSE JSON FILE';
+    margin: 15px;
+    padding: 10px 15px;
+    background-color: #008b8b;
+    display: inline-block;
+    border-radius: 3px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    color: white;
+    font-weight: 700;
+    font-size: 10pt;
+    cursor: pointer;
+  }
+  &:hover::before {
+    box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+  }
+  &:active::before {
+    opacity: .5;
+  }
 }
 
 </style>

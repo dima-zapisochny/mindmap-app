@@ -6,7 +6,32 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     title: 'PESTLE ANALYSIS INDIA',
-    children: []
+    children: [
+      {
+        title: 'POLITICAL FACTORS',
+        children: []
+      },
+      {
+        title: 'ECONOMIC FACTORS',
+        children: []
+      },
+      {
+        title: 'SOCIAL FACTORS',
+        children: []
+      },
+      {
+        title: 'TECHNOLOGICAL FACTORS',
+        children: []
+      },
+      {
+        title: 'LEGAL FACTORS',
+        children: []
+      },
+      {
+        title: 'ENVIRONMENTAL FACTORS',
+        children: []
+      }
+    ]
   },
   mutations: {
     SET_ELEMENT_TO_STORE (state, title) {

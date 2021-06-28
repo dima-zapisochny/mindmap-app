@@ -18,14 +18,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .json-map {
   width: calc(100% - 40px);
   min-height: calc(30% - 40px);
   padding: 20px;
-  background-color: black;
-  color: chartreuse;
+  background-color: #000;
+  color: #80FF00;
   font-weight: bold;
   overflow-y: scroll;
 }

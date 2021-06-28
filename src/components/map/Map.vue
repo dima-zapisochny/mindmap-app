@@ -1,16 +1,16 @@
 <template>
   <div class="map">
-    <div class="element" :class="{'parent-root': CHILDREN.length > 0}">
+    <div class="element" :class="{'parent-root': isHaveChildren}">
       <h3 class="element__title">{{ TITLE }}</h3>
       <button class="element__button" type="button" @click="addElement">+</button>
     </div>
     <ul class="element__list">
       <Element
-        v-for="(child, index) in CHILDREN"
+        v-for="(child, index) in this.CHILDREN"
         :key="child.id"
         :parent="child"
         :index="index"
-        :class="{'list-root': CHILDREN.length > 1}"
+        :class="{'list-root': childLength}"
         @deleteElement="deleteElement"/>
     </ul>
   </div>
@@ -29,7 +29,13 @@ export default {
     ...mapGetters({
       TITLE: 'TITLE',
       CHILDREN: 'CHILDREN'
-    })
+    }),
+    childLength: function () {
+      return this.CHILDREN.length > 1
+    },
+    isHaveChildren: function () {
+      return this.CHILDREN.length
+    }
   },
   methods: {
     ...mapMutations({
@@ -47,7 +53,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 
 .map {
   display: flex;
@@ -64,80 +70,76 @@ export default {
   min-width: 230px;
   height: 50px;
   border-radius: 30px;
-  background-color: darkcyan;
+  background-color:  #008b8b;
   margin: 10px 0;
+  &__title {
+     min-width: 50%;
+     font-size: 16px;
+     margin: auto 20px auto 0;
+     color: white;
+   }
+  &__button {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    margin: auto 7px;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+    background-color:  #008b8b;
+    border: white solid 2px;
+  }
+  &__list {
+    position: relative;
+    height: auto;
+    padding: 0;
+    margin-left: 50px;
+  }
 }
 
-.element__title {
-  min-width: 50%;
-  font-size: 16px;
-  margin: auto 20px auto 0;
-  color: white;
-}
-
-.element__button {
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 25px;
-  height: 25px;
-  margin: auto 7px;
-  color: white;
-  font-size: 26px;
-  cursor: pointer;
-  background-color: darkcyan;
-  border: white solid 2px;
-}
-
-.element__list {
-  position: relative;
-  height: auto;
-  padding: 0;
-  margin-left: 50px;
-}
-
-.list-root:before {
-  background-color: black;
-  position: absolute;
-  content: '';
-  width: 2px;
-  height: 100%;
-  left: -25px;
-}
-
-.list-root:first-child:before {
-  background-color: black;
-  position: absolute;
-  content: '';
-  width: 2px;
-  height: 50%;
-  left: -25px;
-  top: 50%;
-}
-
-.list-root:last-child:before {
-  background-color: black;
-  position: absolute;
-  content: '';
-  width: 2px;
-  height: 50%;
-  left: -25px;
-  bottom: 50%;
+.list-root{
+  &:before {
+    background-color: #000;
+    position: absolute;
+    content: '';
+    width: 2px;
+    height: 100%;
+    left: -25px;
+  }
+  &:first-child:before {
+    background-color: #000;
+    position: absolute;
+    content: '';
+    width: 2px;
+    height: 50%;
+    left: -25px;
+    top: 50%;
+  }
+  &:last-child:before {
+    background-color: #000;
+    position: absolute;
+    content: '';
+    width: 2px;
+    height: 50%;
+    left: -25px;
+    bottom: 50%;
+  }
 }
 
 .parent-root {
   position: relative;
-}
-
-.parent-root:after {
-  background-color: black;
-  position: absolute;
-  content: '';
-  width: 25px;
-  height: 2px;
-  left: 100%;
-  top: 50%;
+  &:after {
+    background-color: #000;
+    position: absolute;
+    content: '';
+    width: 25px;
+    height: 2px;
+    left: 100%;
+    top: 50%;
+  }
 }
 
 </style>
