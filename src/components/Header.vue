@@ -13,8 +13,8 @@ export default {
   name: 'Header',
   computed: {
     ...mapGetters({
-      TITLE: 'TITLE',
-      CHILDREN: 'CHILDREN'
+      title: 'TITLE',
+      children: 'CHILDREN'
     })
   },
   methods: {
@@ -38,9 +38,8 @@ export default {
       })
     },
     downloadJsonFile (event) {
-      const title = this.TITLE
-      const children = this.CHILDREN
-      console.log(this.CHILDREN)
+      const title = this.title
+      const children = this.children
       const data = JSON.stringify({ title, children })
       const file = new Blob([data], { type: 'application/json' })
       event.target.href = URL.createObjectURL(file)

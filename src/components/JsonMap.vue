@@ -1,6 +1,6 @@
 <template>
   <div class="json-map">
-    <pre>{{ JSON.stringify({title: TITLE, children: CHILDREN}, null, 4) }}</pre>
+    <pre>{{ JSON.stringify({title, children}, null, 4) }}</pre>
   </div>
 </template>
 
@@ -11,8 +11,8 @@ export default {
   name: 'JsonMap',
   computed: {
     ...mapGetters({
-      TITLE: 'TITLE',
-      CHILDREN: 'CHILDREN'
+      title: 'TITLE',
+      children: 'CHILDREN'
     })
   }
 }

@@ -1,12 +1,12 @@
 <template>
   <div class="map">
     <div class="element" :class="{'parent-root': isHaveChildren}">
-      <h3 class="element__title">{{ TITLE }}</h3>
+      <h3 class="element__title">{{ title }}</h3>
       <button class="element__button" type="button" @click="addElement">+</button>
     </div>
     <ul class="element__list">
       <Element
-        v-for="(child, index) in this.CHILDREN"
+        v-for="(child, index) in children"
         :key="child.id"
         :parent="child"
         :index="index"
@@ -21,20 +21,20 @@ import { mapGetters, mapMutations } from 'vuex'
 import Element from './Element'
 
 export default {
-  name: 'MAP',
+  name: 'Map',
   components: {
     Element
   },
   computed: {
     ...mapGetters({
-      TITLE: 'TITLE',
-      CHILDREN: 'CHILDREN'
+      title: 'TITLE',
+      children: 'CHILDREN'
     }),
     childLength: function () {
-      return this.CHILDREN.length > 1
+      return this.children.length > 1
     },
     isHaveChildren: function () {
-      return this.CHILDREN.length
+      return this.children.length
     }
   },
   methods: {

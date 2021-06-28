@@ -107,7 +107,6 @@ export default {
 .nested-element {
   position: relative;
   display: flex;
-  cursor: move;
 }
 
 .parent-element {
