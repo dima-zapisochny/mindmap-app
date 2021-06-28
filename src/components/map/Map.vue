@@ -5,7 +5,7 @@
       <button class="element__button" type="button" @click="addElement">+</button>
     </div>
     <ul class="element__list">
-      <NestedElement
+      <Element
         v-for="(child, index) in CHILDREN"
         :key="child.id"
         :parent="child"
@@ -18,12 +18,12 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
-import NestedElement from './NestedElement'
+import Element from './Element'
 
 export default {
   name: 'MAP',
   components: {
-    NestedElement
+    Element
   },
   computed: {
     ...mapGetters({

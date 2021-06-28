@@ -22,8 +22,8 @@ export default new Vuex.Store({
     SET_TITLE_TO_STORE (state, title) {
       state.title = title
     },
-    SET_ITEMS_TO_STORE (state, items) {
-      state.children = items
+    SET_ITEMS_TO_STORE (state, children) {
+      state.children = children
     }
   },
   getters: {

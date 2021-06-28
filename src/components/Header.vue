@@ -39,8 +39,9 @@ export default {
     },
     downloadJsonFile (event) {
       const title = this.TITLE
-      const items = this.CHILDREN
-      const data = JSON.stringify({ title, items })
+      const children = this.CHILDREN
+      console.log(this.CHILDREN)
+      const data = JSON.stringify({ title, children })
       const file = new Blob([data], { type: 'application/json' })
       event.target.href = URL.createObjectURL(file)
     }
