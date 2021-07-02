@@ -1,7 +1,7 @@
 <template>
   <header class="header-app">
-    <a href="" download="data.json" class="download-file-button" @click="downloadJsonFile">DOWNLOAD JSON FILE</a>
-    <input type="file" class="load-file-button" name="files" @change="loadJsonFile"/>
+    <a href="" download="data.json" class="download-file-button" @click="downloadFile">DOWNLOAD JSON FILE</a>
+    <input type="file" class="load-file-button" name="files" @change="loadFile"/>
     <h3 class="header-app__title">MINDMAP APP</h3>
   </header>
 </template>
@@ -9,9 +9,15 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 import { MUTATION } from '../vuex/mutation-types'
+import JsonFileService from '../services/JsonFileService'
 
 export default {
   name: 'Header',
+  data () {
+    return {
+      jsonFile: new JsonFileService()
+    }
+  },
   computed: {
     ...mapGetters({
       title: 'title',
@@ -23,27 +29,14 @@ export default {
       setTitleToStore: MUTATION.SET_TITLE_TO_STORE,
       setChildrenToStore: MUTATION.SET_CHILDREN_TO_STORE
     }),
-    loadJsonFile (event) {
-      const files = event.target.files
-      files.forEach((file) => {
-        new Promise((resolve, reject) => {
-          const reader = new FileReader()
-          reader.onload = () => resolve(reader.result)
-          reader.onerror = reject
-          reader.readAsText(file, 'gbk')
-        }).then((result) => {
-          const resultJSON = JSON.parse(result)
-          this.SET_TITLE_TO_STORE(resultJSON.title)
-          this.SET_ITEMS_TO_STORE(resultJSON.children)
-        })
+    loadFile (event) {
+      this.jsonFile.loadJsonFile(event).then((result) => {
+        this.setTitleToStore(result.title)
+        this.setChildrenToStore(result.children)
       })
     },
-    downloadJsonFile (event) {
-      const title = this.title
-      const children = this.children
-      const data = JSON.stringify({ title, children })
-      const file = new Blob([data], { type: 'application/json' })
-      event.target.href = URL.createObjectURL(file)
+    downloadFile (event) {
+      this.jsonFile.downloadJsonFile(event, this.title, this.children)
     }
   }
 }
