@@ -54,8 +54,6 @@ export default {
   &__title {
     margin: 25px;
     color: #008b8b;
-    display: inline-flex;
-    float: right;
   }
 }
 

@@ -45,10 +45,10 @@ export default {
     }),
     addElement () {
       const title = prompt('Enter a title for the item', 'Title')
-      this.SET_ELEMENT_TO_STORE(title)
+      this.setElementToStore(title)
     },
     deleteElement (index) {
-      this.REMOVE_ELEMENT_FROM_STORE(index)
+      this.removeElementFromStore(index)
     }
   }
 }

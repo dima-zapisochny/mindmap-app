@@ -70,11 +70,11 @@ export default {
     dragOver (event) {
       event.preventDefault()
     },
-    dragEnter (event) {
+    dragEnter () {
       this.$el.firstChild.classList.add('drop-element')
       console.log()
     },
-    dragLeave (event) {
+    dragLeave () {
       this.$el.firstChild.classList.remove('drop-element')
       console.log(this)
     },
