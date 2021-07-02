@@ -1,6 +1,6 @@
 <template>
   <div class="json-map">
-    <pre>{{ JSON.stringify({title, children}, null, 4) }}</pre>
+    <pre>{{ getJsonMap }}</pre>
   </div>
 </template>
 
@@ -11,9 +11,12 @@ export default {
   name: 'JsonMap',
   computed: {
     ...mapGetters({
-      title: 'TITLE',
-      children: 'CHILDREN'
-    })
+      title: 'title',
+      children: 'children'
+    }),
+    getJsonMap: function () {
+      return JSON.stringify({ title: this.title, children: this.children }, null, 4)
+    }
   }
 }
 </script>
@@ -27,7 +30,6 @@ export default {
   background-color: #000;
   color: #80FF00;
   font-weight: bold;
-  overflow-y: scroll;
 }
 
 </style>
