@@ -1,8 +1,10 @@
 <template>
   <header class="header-app">
-    <a href="" download="data.json" class="download-file-button" @click="downloadFile">DOWNLOAD JSON FILE</a>
-    <input type="file" class="load-file-button" name="files" @change="loadFile"/>
-    <h3 class="header-app__title">MINDMAP APP</h3>
+    <div class="header-app__buttons">
+      <a href="" download="data.json" class="download-file-button" @click="downloadFile">DOWNLOAD JSON FILE</a>
+      <input type="file" class="load-file-button" name="files" @change="loadFile"/>
+      <h3 class="header-app__title">MINDMAP APP</h3>
+    </div>
   </header>
 </template>
 
@@ -45,6 +47,8 @@ export default {
 <style lang="scss" scoped>
 
 .header-app {
+  display: flex;
+  justify-content: space-between;
   height: 70px;
   box-shadow: 0 5px 10px 0 rgba(34, 60, 80, 0.2);
   &__title {
