@@ -3,7 +3,7 @@
     <div class="element child-root"
          :draggable="isDraggable"
          :class="{'parent-element parent-root': isHaveChildren}"
-         :style="{backgroundColor: randomColor()}"
+         :style="{backgroundColor: parent.backgroundColor}"
          @dragstart="dragStart"
          @dragover="dragOver"
          @dragenter="dragEnter"
@@ -88,14 +88,15 @@ export default {
       const title = prompt('Enter a title for the item', 'Title')
       const element = {
         title,
-        children: []
+        children: [],
+        backgroundColor: this.generateRandomColor()
       }
       this.parent.children.push(element)
     },
     deleteElement () {
       this.parentItem ? this.parentItem.children.splice(this.index, 1) : this.$emit('deleteElement', this.index)
     },
-    randomColor () {
+    generateRandomColor () {
       return '#' + (0x1000000 + (Math.random()) * 0xffffff).toString(16).substr(1, 6)
     }
   }
