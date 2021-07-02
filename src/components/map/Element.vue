@@ -127,7 +127,7 @@ export default {
 }
 
 .drop-element {
-  box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+  box-shadow: 0 0 8px 5px rgba(34, 60, 80, 0.2);
 }
 
 </style>

@@ -46,7 +46,7 @@ export default {
 
 .header-app {
   height: 70px;
-  box-shadow: 0px 5px 10px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 0 5px 10px 0 rgba(34, 60, 80, 0.2);
   &__title {
     margin: 25px;
     color: #008b8b;
@@ -66,9 +66,7 @@ export default {
   font-size: 10pt;
   cursor: pointer;
   &:hover {
-    webkit-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
-    moz-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
-    box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+    box-shadow: 0 0 8px 5px rgba(34, 60, 80, 0.2);
   }
   &:active {
     opacity: .5;
@@ -96,7 +94,7 @@ export default {
     cursor: pointer;
   }
   &:hover::before {
-    box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+    box-shadow: 0 0 8px 5px rgba(34, 60, 80, 0.2);
   }
   &:active::before {
     opacity: .5;
