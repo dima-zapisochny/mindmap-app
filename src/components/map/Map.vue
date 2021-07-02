@@ -19,6 +19,7 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 import Element from './Element'
+import { MUTATION } from '../../vuex/mutation-types'
 
 export default {
   name: 'Map',
@@ -27,8 +28,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      title: 'TITLE',
-      children: 'CHILDREN'
+      title: 'title',
+      children: 'children'
     }),
     childLength: function () {
       return this.children.length > 1
@@ -39,8 +40,8 @@ export default {
   },
   methods: {
     ...mapMutations({
-      SET_ELEMENT_TO_STORE: 'SET_ELEMENT_TO_STORE',
-      REMOVE_ELEMENT_FROM_STORE: 'REMOVE_ELEMENT_FROM_STORE'
+      setElementToStore: MUTATION.SET_ELEMENT_TO_STORE,
+      removeElementFromStore: MUTATION.REMOVE_ELEMENT_FROM_STORE
     }),
     addElement () {
       const title = prompt('Enter a title for the item', 'Title')

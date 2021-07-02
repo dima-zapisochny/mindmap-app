@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { MUTATION } from './mutation-types'
 
 Vue.use(Vuex)
 
@@ -9,53 +10,59 @@ export default new Vuex.Store({
     children: [
       {
         title: 'POLITICAL FACTORS',
-        children: []
+        children: [],
+        backgroundColor: '#04CE86'
       },
       {
         title: 'ECONOMIC FACTORS',
-        children: []
+        children: [],
+        backgroundColor: '#C436FF'
       },
       {
         title: 'SOCIAL FACTORS',
-        children: []
+        children: [],
+        backgroundColor: '#244EFF'
       },
       {
         title: 'TECHNOLOGICAL FACTORS',
-        children: []
+        children: [],
+        backgroundColor: '#742DA9'
       },
       {
         title: 'LEGAL FACTORS',
-        children: []
+        children: [],
+        backgroundColor: '#8ED246'
       },
       {
         title: 'ENVIRONMENTAL FACTORS',
-        children: []
+        children: [],
+        backgroundColor: '#FF314A'
       }
     ]
   },
   mutations: {
-    SET_ELEMENT_TO_STORE (state, title) {
+    [MUTATION.SET_ELEMENT_TO_STORE] (state, title) {
       const element = {
         title,
         children: []
       }
       state.children.push(element)
     },
-    REMOVE_ELEMENT_FROM_STORE (state, index) {
+    [MUTATION.REMOVE_ELEMENT_FROM_STORE] (state, index) {
       state.children.splice(index, 1)
     },
-    SET_TITLE_TO_STORE (state, title) {
+    [MUTATION.SET_TITLE_TO_STORE] (state, title) {
       state.title = title
     },
-    SET_ITEMS_TO_STORE (state, children) {
+    [MUTATION.SET_CHILDREN_TO_STORE] (state, children) {
       state.children = children
     }
   },
   getters: {
-    TITLE: state => {
+    title: state => {
       return state.title
     },
-    CHILDREN: state => {
+    children: state => {
       return state.children
     }
   }

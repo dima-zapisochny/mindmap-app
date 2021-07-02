@@ -8,19 +8,20 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
+import { MUTATION } from '../vuex/mutation-types'
 
 export default {
   name: 'Header',
   computed: {
     ...mapGetters({
-      title: 'TITLE',
-      children: 'CHILDREN'
+      title: 'title',
+      children: 'children'
     })
   },
   methods: {
     ...mapMutations({
-      SET_TITLE_TO_STORE: 'SET_TITLE_TO_STORE',
-      SET_ITEMS_TO_STORE: 'SET_ITEMS_TO_STORE'
+      setTitleToStore: MUTATION.SET_TITLE_TO_STORE,
+      setChildrenToStore: MUTATION.SET_CHILDREN_TO_STORE
     }),
     loadJsonFile (event) {
       const files = event.target.files
